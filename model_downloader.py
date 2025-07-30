@@ -133,6 +133,10 @@ if SAFETENSORS_AVAILABLE and TORCH_AVAILABLE:
                     metadata = f.metadata()
                     tensor_names = f.keys()
                     
+                    # Test loading a tensor to ensure data integrity
+                    if tensor_names:
+                        tensor = f.get_tensor(next(iter(tensor_names)))
+                    
                     print(f"✅ Valid: {os.path.basename(file_path)} ({len(tensor_names)} tensors)")
                     valid_files += 1
                     
@@ -142,6 +146,10 @@ if SAFETENSORS_AVAILABLE and TORCH_AVAILABLE:
                     with safe_open(file_path, framework="pt", device="cpu") as f:
                         metadata = f.metadata()
                         tensor_names = f.keys()
+                        
+                        # Test loading a tensor to ensure data integrity
+                        if tensor_names:
+                            tensor = f.get_tensor(next(iter(tensor_names)))
                         
                         print(f"✅ Valid: {os.path.basename(file_path)} ({len(tensor_names)} tensors) [CPU fallback]")
                         valid_files += 1
