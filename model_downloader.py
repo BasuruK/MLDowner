@@ -305,11 +305,7 @@ if not (SAFETENSORS_AVAILABLE and TORCH_AVAILABLE):
     print("  pip install safetensors torch")
 
 # Show usage instructions based on operation mode
-if choice == '1':
-    print("\nFor fine-tuning with Unsloth, you can now use:")
-    print(f"from unsloth import FastLanguageModel")
-    print(f"model, tokenizer = FastLanguageModel.from_pretrained('{local_dir}')")
-elif choice == '2':
+if choice == '2':
     print(f"\nModel verification completed for: {local_dir}")
 else:
     print(f"\nBatch model verification completed for: {base_dir}")
