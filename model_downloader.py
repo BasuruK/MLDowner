@@ -307,9 +307,9 @@ if not (SAFETENSORS_AVAILABLE and TORCH_AVAILABLE):
 # Show usage instructions based on operation mode
 if choice == '2':
     print(f"\nModel verification completed for: {local_dir}")
-else:
+elif choice == '3':
     print(f"\nBatch model verification completed for: {base_dir}")
-    if model_directories:
+    if 'model_directories' in locals() and model_directories:
         print("Valid model directories found:")
         for model_dir in model_directories:
             relative_path = os.path.relpath(model_dir, base_dir)
